@@ -4,6 +4,6 @@
   },
   "db": {
     "host": "mongodb://localhost/",
-    "name": "fc_cache"
+    "name": "fc_caches"
   }
 }
