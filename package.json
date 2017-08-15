@@ -1,8 +1,9 @@
 {
   "name": "fashion-cloud-api",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "mocha"
   },
   "author": {
     "name": "Alexey S. Kiselev",
@@ -15,5 +16,7 @@
     "mongoose": "^4.11.7",
     "morgan": "^1.8.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "mocha": "^3.5.0"
+  }
 }
