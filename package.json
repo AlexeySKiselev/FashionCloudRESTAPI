@@ -1,0 +1,19 @@
+{
+  "name": "fashion-cloud-api",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": {
+    "name": "Alexey S. Kiselev",
+    "email": "alexeys.kiselev@yahoo.com"
+  },
+  "description": "Fashion Cloud API",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "mongoose": "^4.11.7",
+    "morgan": "^1.8.2"
+  },
+  "devDependencies": {}
+}
