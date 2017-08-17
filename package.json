@@ -1,6 +1,6 @@
 {
   "name": "fashion-cloud-api",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "scripts": {
     "start": "node server.js",
     "test": "mocha"
@@ -17,6 +17,8 @@
     "morgan": "^1.8.2"
   },
   "devDependencies": {
+    "chai": "^4.1.1",
+    "chai-http": "^3.0.0",
     "mocha": "^3.5.0"
   }
 }

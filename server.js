@@ -14,3 +14,5 @@ server.on('request',app);
 server.listen(settings.server.port,function(){
     console.log('Server is running on port', settings.server.port);
 });
+
+module.exports = server;
