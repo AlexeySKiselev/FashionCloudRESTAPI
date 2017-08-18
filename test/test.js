@@ -213,7 +213,7 @@ describe('POST request to /api/cache/:key', function(){
     });
 });
 
-/*describe('DELETE request to /api/cache/:key', function(){
+describe('DELETE request to /api/cache/:key', function(){
     it('shoult delete record with key "234" from base', function(done){
         chai.request(server)
             .delete('/api/cache/234')
@@ -241,4 +241,4 @@ describe('DELETE request to /api/cache', function(){
                 });
             });
     });
-});*/
+});
