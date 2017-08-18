@@ -178,3 +178,33 @@ describe('GET request to /api/cache', function(){
             });
     });
 });
+
+describe('DELETE request to /api/cache/:key', function(){
+    it('shoult delete record with key "234" from base', function(done){
+        chai.request(server)
+            .delete('/api/cache/234')
+            .end(function(err, res){
+                res.should.have.status(200);
+                Cache.count({key: '234'}, function(err, count){
+                    if(err) throw err;
+                    assert.equal(0,count);
+                    done();
+                });
+            });
+    });
+});
+
+describe('DELETE request to /api/cache', function(){
+    it('shoult clears Cache Base', function(done){
+        chai.request(server)
+            .delete('/api/cache')
+            .end(function(err, res){
+                res.should.have.status(200);
+                Cache.count({}, function(err, count){
+                    if(err) throw err;
+                    assert.equal(0,count);
+                    done();
+                });
+            });
+    });
+});

@@ -78,12 +78,19 @@ router.post('/cache/:key', function(req, res) {
 
 // Delete given key from cache
 router.delete('/cache/:key', function(req, res) {
-
+    Cache.findOneAndRemove({key: req.params.key}, function(err) {
+        if(err) throw err;
+        console.log('Record with key "' + req.params.key + '" removed from Cache base');
+        res.json({status: 'ok'});
+    });
 });
 
 // Delete all keys from the cache
 router.delete('/cache', function(req, res) {
-
+    Cache.remove({}, function(){
+        console.log('Cache is clear');
+        res.json({status: 'ok'});
+    });
 });
 
 module.exports = router;
