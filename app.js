@@ -9,19 +9,19 @@ var express = require('express'),
     bodyParser = require('body-parser')
     mongoose = require('mongoose');
 
+// Create Express App
+var app = express();
+
 // Connecting to Database
-mongoose.connect(settings.db.host+settings.db.name, {
+mongoose.connect(settings.db.host+settings.db.name[app.settings.env], {
     useMongoClient: true
 }, function(err) {
     if(err) {
         console.log(err);
     } else {
-        console.log('Successfully connected to', settings.db.host+settings.db.name);
+        console.log('Successfully connected to', settings.db.host+settings.db.name[app.settings.env]);
     }
 });
-
-// Create Express App
-var app = express();
 
 // Logger
 app.use(morgan('dev'));

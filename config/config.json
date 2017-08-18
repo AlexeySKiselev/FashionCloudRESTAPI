@@ -4,6 +4,19 @@
   },
   "db": {
     "host": "mongodb://localhost/",
-    "name": "fc_caches"
+    "name": {
+      "development": "fc_caches",
+      "test": "test_fc_caches"
+    }
+  },
+  "keys": {
+    "development": {
+      "allowedKeys": 20,
+      "keyTTL": 3600000
+    },
+    "test": {
+      "allowedKeys": 2,
+      "keyTTL": 3000
+    }
   }
 }
