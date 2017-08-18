@@ -23,7 +23,7 @@ var cacheSchema = new mongoose.Schema({
     data: {
         string: String
     }
-}, { collection: 'fc_caches' });
+}, { collection: settings.db.collection });
 
 /**
  * Generate unique Key

@@ -13,13 +13,13 @@ var express = require('express'),
 var app = express();
 
 // Connecting to Database
-mongoose.connect(settings.db.host+settings.db.name[app.settings.env], {
+mongoose.connect(settings.db.host + ':' + settings.db.port + '/' + settings.db.name[app.settings.env], {
     useMongoClient: true
 }, function(err) {
     if(err) {
         console.log(err);
     } else {
-        console.log('Successfully connected to', settings.db.host+settings.db.name[app.settings.env]);
+        console.log('Successfully connected to', settings.db.host + ':' + settings.db.port + '/' + settings.db.name[app.settings.env]);
     }
 });
 

@@ -3,11 +3,13 @@
     "port": 3000
   },
   "db": {
-    "host": "mongodb://localhost/",
+    "host": "mongodb://localhost",
+    "port": "27017",
     "name": {
       "development": "fc_caches",
       "test": "test_fc_caches"
-    }
+    },
+    "collection": "fc_caches"
   },
   "keys": {
     "development": {
