@@ -73,7 +73,53 @@ router.get('/cache/:key', function(req, res) {
 
 // Create or Update record by key
 router.post('/cache/:key', function(req, res) {
-
+    Cache.checkKey(req.params.key, function(response){
+        console.log(response.consoleMessage);
+        switch(response.status){
+            case 'error':
+                res.json({error: true});
+                break;
+            case 'ok':
+                Cache.updateOne({
+                    key: req.params.key
+                },{$set: {
+                    ttl: (new Date().getTime() + settings.keys[process.env.NODE_ENV].keyTTL),
+                    lastused: new Date().getTime(),
+                    data: req.body.data
+                }}, function(err) {
+                    if(err) throw err;
+                    res.json(req.body.data);
+                });
+                break;
+            case 'miss':
+                Cache.removeExcessedKeys(function(){
+                    var newCache = new Cache({
+                        key: req.params.key,
+                        data: req.body.data
+                    });
+                    newCache.save(function(err){
+                        if(err) throw err;
+                        res.json(req.body.data);
+                    });
+                });
+                break;
+            case 'exceed':
+                Cache.updateOne({
+                    key: req.params.key
+                },{$set: {
+                    ttl: (new Date().getTime() + settings.keys[process.env.NODE_ENV].keyTTL),
+                    lastused: new Date().getTime(),
+                    data: req.body.data
+                }}, function(err) {
+                    if(err) throw err;
+                    res.json(req.body.data);
+                });
+                break;
+            default:
+                res.json({error: true});
+                break;
+        }
+    });
 });
 
 // Delete given key from cache

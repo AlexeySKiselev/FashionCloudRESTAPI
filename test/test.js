@@ -179,7 +179,41 @@ describe('GET request to /api/cache', function(){
     });
 });
 
-describe('DELETE request to /api/cache/:key', function(){
+describe('POST request to /api/cache/:key', function(){
+    it('should add record with key "789" and data.string "good test" to Cache Base', function(done){
+        chai.request(server)
+            .post('/api/cache/789')
+            .send({data: {string: 'good test'}})
+            .end(function(err, res){
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                res.body.should.have.property('string');
+                expect(res.body.string).to.equal('good test');
+                done();
+            });
+    });
+    it('should remove record with key "234" from base', function(done){
+        Cache.count({key: '234'}, function(err, count){
+            if(err) throw err;
+            assert.equal(0,count);
+            done();
+        });
+    });
+    it('should changes data.string to "another good test" with key "789"', function(done){
+        chai.request(server)
+            .post('/api/cache/789')
+            .send({data: {string: 'another good test'}})
+            .end(function(err, res){
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                res.body.should.have.property('string');
+                expect(res.body.string).to.equal('another good test');
+                done();
+            });
+    });
+});
+
+/*describe('DELETE request to /api/cache/:key', function(){
     it('shoult delete record with key "234" from base', function(done){
         chai.request(server)
             .delete('/api/cache/234')
@@ -207,4 +241,4 @@ describe('DELETE request to /api/cache', function(){
                 });
             });
     });
-});
+});*/
