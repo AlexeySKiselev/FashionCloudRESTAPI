@@ -1,6 +1,7 @@
 {
   "name": "fashion-cloud-api",
-  "version": "1.2.7",
+  "version": "1.2.8",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "test": "mocha"
@@ -20,5 +21,14 @@
     "chai": "^4.1.1",
     "chai-http": "^3.0.0",
     "mocha": "^3.5.0"
+  },
+  "bugs": {
+    "url" : "https://github.com/AlexeySKiselev/FashionCloudRESTAPI/issues",
+    "email" : "alexeys.kiselev@yahoo.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlexeySKiselev/FashionCloudRESTAPI.git"
   }
 }
