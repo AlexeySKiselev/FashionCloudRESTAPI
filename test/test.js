@@ -183,7 +183,7 @@ describe('POST request to /api/cache/:key', function(){
     it('should add record with key "789" and data.string "good test" to Cache Base', function(done){
         chai.request(server)
             .post('/api/cache/789')
-            .send({data: {string: 'good test'}})
+            .send({string: 'good test'})
             .end(function(err, res){
                 res.should.have.status(200);
                 res.body.should.be.a('object');
@@ -202,7 +202,7 @@ describe('POST request to /api/cache/:key', function(){
     it('should changes data.string to "another good test" with key "789"', function(done){
         chai.request(server)
             .post('/api/cache/789')
-            .send({data: {string: 'another good test'}})
+            .send({string: 'another good test'})
             .end(function(err, res){
                 res.should.have.status(200);
                 res.body.should.be.a('object');

@@ -6,13 +6,13 @@
     "host": "mongodb://localhost",
     "port": "27017",
     "name": {
-      "development": "fc_caches",
+      "production": "fc_caches",
       "test": "test_fc_caches"
     },
     "collection": "fc_caches"
   },
   "keys": {
-    "development": {
+    "production": {
       "allowedKeys": 20,
       "keyTTL": 3600000
     },

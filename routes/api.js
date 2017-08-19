@@ -85,21 +85,21 @@ router.post('/cache/:key', function(req, res) {
                 },{$set: {
                     ttl: (new Date().getTime() + settings.keys[process.env.NODE_ENV].keyTTL),
                     lastused: new Date().getTime(),
-                    data: req.body.data
+                    data: req.body
                 }}, function(err) {
                     if(err) throw err;
-                    res.json(req.body.data);
+                    res.json(req.body);
                 });
                 break;
             case 'miss':
                 Cache.removeExcessedKeys(function(){
                     var newCache = new Cache({
                         key: req.params.key,
-                        data: req.body.data
+                        data: req.body
                     });
                     newCache.save(function(err){
                         if(err) throw err;
-                        res.json(req.body.data);
+                        res.json(req.body);
                     });
                 });
                 break;
@@ -109,10 +109,10 @@ router.post('/cache/:key', function(req, res) {
                 },{$set: {
                     ttl: (new Date().getTime() + settings.keys[process.env.NODE_ENV].keyTTL),
                     lastused: new Date().getTime(),
-                    data: req.body.data
+                    data: req.body
                 }}, function(err) {
                     if(err) throw err;
-                    res.json(req.body.data);
+                    res.json(req.body);
                 });
                 break;
             default:

@@ -3,6 +3,8 @@
  * Created by Alexey S. Kiselev on August 2017.
  */
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'production';
+
 var express = require('express'),
     settings = require('./config/config.json'),
     morgan = require('morgan'),
@@ -32,8 +34,6 @@ var api = require('./routes/api');
 // App Settings
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// Routes
 
 // Routes
 app.use('/api', api);
